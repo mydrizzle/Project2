@@ -4,6 +4,9 @@ $db = new PDO('mysql:host=localhost;
                 dbname=phpweek','root','');
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
+print "<a href='opdracht_dag2_if.php'>Overzicht</a> -
+        <a href='opdracht_dag2_if.php?actie=toevoegen'>Cijfer Toevoegen</a> <br />";
+
 if(isset($_GET['actie']))
 {
     $actie = $_GET['actie'];
@@ -14,11 +17,11 @@ else{
 
 
 
-if(isset($_GET['pagina']))
+if($actie == "toevoegen")
 {
   // formulier
     ?>
-    <form action="opdracht_dag2.php?actie=toevoegen" method="post">
+    <form action="opdracht_dag2_if.php" method="post">
         Vak : <input name="vak" type="text" /> <br />
         Cijfer : <input name="cijfer" type="text" /> <br />
         <input name="toevoegen" type="submit" value="Cijfer toevoegen" />
@@ -35,28 +38,76 @@ elseif(isset($_POST['toevoegen']))
     else
     {
         // controle of cijfer een float is
-        if(is_numeric($_POST['cijfer']))
+        if(is_numeric($_POST['cijfer']) AND $_POST['cijfer'] <= 10)
         {
             // insert nu echt doen
             $insert = $db->prepare("INSERT INTO cijfers SET
                         vak = :vak,
                         cijfer = :cijfer ");
             $insert->bindParam(":vak", $_POST['vak']);
-            $insert->bindParam(":cijfer", $_POST['cijfer']);
-            $insert->execute();
+$insert->bindParam(":cijfer", $_POST['cijfer']);
+$insert->execute();
 
-            print "Het cijfer voor het vak ".$_POST['vak']." = ".$_POST['cijfer']." is toegevoegd";
-        }
-        else
-        {
-            print "Bij het cijfer heb je geen getal ingevuld. <br />
+print "Het cijfer voor het vak ".$_POST['vak']." = ".$_POST['cijfer']." is toegevoegd";
+}
+else
+{
+    print "Bij het cijfer heb je geen getal ingevuld. <br />
+                     Of je hebt een getal ingevoerd groter dan 10 <br />
                      Gewenst is 'xx.xx'";
-        }
-    }
+}
+}
 }
 elseif($actie == "wijzigen")
 {
-   print "we gaan wijzigen";
+    if(isset($_POST['wijzigen']))
+    {
+        // update
+        if(is_numeric($_POST['cijfer']) AND $_POST['cijfer'] <= 10 AND $_POST['cijfer'] >= 1)
+        {
+           // hij mag updaten
+            $update = $db->prepare("UPDATE cijfers SET
+                          vak = :vak,
+                          cijfer = :cijfer
+                          WHERE id = :id");
+            $update->bindParam(":vak", $_POST['vak']);
+            $update->bindParam(":cijfer", $_POST['cijfer']);
+            $update->bindParam(":id", $_POST['id']);
+            $update->execute();
+
+            print "Het vak en/of cijfer is geupdate";
+
+        }
+        else
+        {
+            // error !!!!!
+            print "Het cijfer is geen getal, of hoger dan 10";
+        }
+
+    }
+    else
+    {
+        // ingevuld form laten zien
+        print "we gaan wijzigen";
+        $verkrijg_cijfer = $db->prepare("SELECT *
+                                    FROM cijfers
+                                    WHERE id = :id");
+        $verkrijg_cijfer->bindParam(":id", $_GET['id']);
+        $verkrijg_cijfer->execute();
+
+        $cijfers = $verkrijg_cijfer->fetch(PDO::FETCH_ASSOC);
+
+        ?>
+        <form action="opdracht_dag2_if.php?actie=wijzigen" method="post">
+            Vak : <input name="vak" type="text" value="<?php print $cijfers['vak']; ?>" /> <br />
+            Cijfer : <input name="cijfer" type="text" value="<?php print $cijfers['cijfer']; ?>" /> <br />
+            <input name="id" type="hidden" value="<?php print $cijfers['id']; ?>" />
+            <input name="wijzigen" type="submit" value="Cijfer wijzigen" />
+
+        </form>
+        <?php
+    }
+
 }
 elseif($actie == "verwijderen")
 {
@@ -83,8 +134,8 @@ else
             $teller++;
             print "<tr><td>".$cijfers['vak']."</td>";
             print "<td>".$cijfers['cijfer']."</td>
-                <td><a href='opdracht_dag2.php?actie=wijzigen'>Wijzigen</a></td>
-                <td><a href='opdracht_dag2.php?actie=verwijderen'>Verwijderen</a></td>
+                <td><a href='opdracht_dag2_if.php?actie=wijzigen&id=".$cijfers['id']."'>Wijzigen</a></td>
+                <td><a href='opdracht_dag2_if.php?actie=verwijderen&id=".$cijfers['id']."'>Verwijderen</a></td>
                 </tr>";
         }
         print "</table>";
