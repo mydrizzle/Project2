@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Klanten</title>
+</head>
+<body>
+
+<p>Dit is de admin voor klanten</p>
+
+<!-- START BLOCK : WIJZIG -->
+<form method="post" action="admin.php?actie=wijzigen">
+    <input name="naam" type="text" value="{NAAM}" /> <br />
+    <input name="adres" type="text" value="{ADRES}" /><br />
+    <input name="postcode" type="text" value="{POSTCODE}" /><br />
+    <input name="plaats" type="text" value="{PLAATS}" /><br />
+
+    <input name="klantid" type="hidden" value="{KID}" />
+
+    <input name="submit" type="submit" value="Update Klant" />
+
+</form>
+<!-- END BLOCK : WIJZIG -->
+
+<!-- START BLOCK : OVERZICHT -->
+<table border="1">
+    <tr>
+        <td>Naam</td>
+        <td>Adres</td>
+        <td>Postcode</td>
+        <td>Plaats</td>
+        <td>Wijzigen</td>
+        <td>Verwijderen</td>
+    </tr>
+    <!-- START BLOCK : KLANTEN -->
+    <tr>
+        <td>{NAAM}</td>
+        <td>{ADRES}</td>
+        <td>{POSTCODE}</td>
+        <td>{PLAATS}</td>
+        <td><a href="admin.php?actie=wijzigen&id={KID}">Wijzigen</a></td>
+        <td>{VERWIJDER}</td>
+    </tr>
+    <!-- END BLOCK : KLANTEN -->
+
+</table>
+<!-- END BLOCK : OVERZICHT -->
+
+</body>
+</html>
