@@ -6,7 +6,7 @@
     <ignored path=".idea/workspace.xml" />
     <file path="/opdracht_dag2.php" changelist="87f447d9-2f80-456f-ac1c-a390f2772ba2" time="1363167520098" ignored="false" />
     <file path="/toetsdag2.php" changelist="87f447d9-2f80-456f-ac1c-a390f2772ba2" time="1363163646879" ignored="false" />
-    <file path="/opdracht_dag2_if.php" changelist="87f447d9-2f80-456f-ac1c-a390f2772ba2" time="1363181446685" ignored="false" />
+    <file path="/opdracht_dag2_if.php" changelist="87f447d9-2f80-456f-ac1c-a390f2772ba2" time="1363187934441" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +66,10 @@
         <entry file="file://$PROJECT_DIR$/les9.php">
           <provider selected="true" editor-type-id="text-editor">
             <state line="8" column="19" selection-start="172" selection-end="172" vertical-scroll-proportion="10.461538">
-              <folding />
+              <folding>
+                <marker date="1363099805898" expanded="true" signature="295:903" placeholder="..." />
+                <marker date="1363099805898" expanded="true" signature="578:803" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -77,6 +80,7 @@
             <state line="13" column="0" selection-start="289" selection-end="432" vertical-scroll-proportion="-5.6923075">
               <folding>
                 <element signature="e#6#287#0" expanded="true" />
+                <marker date="1363167526782" expanded="true" signature="1911:2143" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -85,7 +89,7 @@
       <file leaf-file-name="opdracht_dag2_if.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/opdracht_dag2_if.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="74" column="35" selection-start="2134" selection-end="2134" vertical-scroll-proportion="0.53973013">
+            <state line="114" column="34" selection-start="3362" selection-end="3362" vertical-scroll-proportion="0.28035983">
               <folding />
             </state>
           </provider>
@@ -397,11 +401,6 @@
     <find-history />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../oud/lessen/werkbon/nr20.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../oud/lessen/werkbon/nr10.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
@@ -472,6 +471,7 @@
         <state line="13" column="0" selection-start="289" selection-end="432" vertical-scroll-proportion="-5.6923075">
           <folding>
             <element signature="e#6#287#0" expanded="true" />
+            <marker date="1363167526782" expanded="true" signature="1911:2143" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -486,13 +486,23 @@
     <entry file="file://$PROJECT_DIR$/les9.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="19" selection-start="172" selection-end="172" vertical-scroll-proportion="10.461538">
+          <folding>
+            <marker date="1363099805898" expanded="true" signature="295:903" placeholder="..." />
+            <marker date="1363099805898" expanded="true" signature="578:803" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../Project4/cakephp_werkend/app/Controller/NewsItemsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="121" column="4" selection-start="3423" selection-end="3423" vertical-scroll-proportion="0.3164983">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/opdracht_dag2_if.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="74" column="35" selection-start="2134" selection-end="2134" vertical-scroll-proportion="0.53973013">
+        <state line="114" column="34" selection-start="3362" selection-end="3362" vertical-scroll-proportion="0.28035983">
           <folding />
         </state>
       </provider>

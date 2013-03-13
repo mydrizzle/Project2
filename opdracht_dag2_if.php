@@ -111,7 +111,47 @@ elseif($actie == "wijzigen")
 }
 elseif($actie == "verwijderen")
 {
-    print "verwijderen";
+    //print "verwijderen";
+    if(isset($_POST['verwijder']))
+    {
+       // delete query
+        $delete = $db->prepare("DELETE FROM cijfers WHERE id = :id");
+        $delete->bindParam(":id", $_POST['id']);
+        $delete->execute();
+
+        print "Het vak met cijfer is verwijderd";
+    }
+    else
+    {
+        // formulier tonen
+        try
+        {
+            $verkrijg_info = $db->prepare("SELECT * FROM cijfers
+                    WHERE id = :id");
+            $verkrijg_info->bindParam(":id", $_GET['id']);
+            $verkrijg_info->execute();
+
+            $info = $verkrijg_info->fetch(PDO::FETCH_ASSOC);
+        }
+        catch(PDOException $e)
+        {
+            echo '<pre>';
+            echo 'Regel: '.$e->getLine().'<br>';
+            echo 'Bestand: '.$e->getFile().'<br>';
+            echo 'Foutmelding: '.$e->getMessage();
+            echo '</pre>';
+        }
+        ?>
+            <form action="opdracht_dag2_if.php?actie=verwijderen" method="post">
+                vak = <?php print $info['vak']; ?><br />
+                cijfer = <?php print $info['cijfer']; ?><br />
+                <input name="id" type="hidden" value="<?php print $info['id']; ?>">
+                <input name="verwijder" type="submit" value="Cijfer verwijderen">
+            </form>
+
+
+        <?php
+    }
 }
 else
 {
